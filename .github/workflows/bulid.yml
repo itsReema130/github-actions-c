@@ -1,4 +1,4 @@
-name: bulid
+name: build
 on: 
   pull_request:
     branches:
@@ -9,7 +9,7 @@ on:
     
 jobs:
   bulid:
-    name: bulid docker
+    name: build docker
     runs-on: ubuntu-22.04
 
     steps:
@@ -19,5 +19,6 @@ jobs:
             username: ${{ vars.DOCKERHUB_USERNAME }}
             password: ${{ secrets.DOCKER_PASS }}
         - run: |
-           docker build . -t itreema130/c-app$GITHUB_SHA
-           docker push itreema130/c-app$GITHUB_SHA
+            IMAGE_TAG=itreema130/c-app:$GITHUB_SHA
+            docker build . -t $IMAGE_TAG
+            docker push $IMAGE_TAG
