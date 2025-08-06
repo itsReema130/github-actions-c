@@ -15,4 +15,4 @@ jobs:
     steps:
        - uses: actions/checkout@v4
        - run: |
-           docker bulid . -t itreema130/c-app${{GITHUB_SHA}}
+           docker bulid . -t itreema130/c-app$GITHUB_SHA
