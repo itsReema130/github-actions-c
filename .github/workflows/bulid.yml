@@ -1,0 +1,18 @@
+name: bulid
+on: 
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+    - main
+    
+jobs:
+  bulid:
+    name: bulid docker
+    runs-on: ubuntu-22.04
+
+    steps:
+       - uses: actions/checkout@v4
+       - run: |
+           docker bulid . -t itreema130/c-app${{GITHUB_SHA}}
